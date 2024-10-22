@@ -12,6 +12,9 @@ bool solve(string str,set<string>&st,map<string,bool>&mp){
     if(mp.find(str)!=mp.end()){
         return mp[str];
     }
+    // Basically here we are starting from start because we have to break the string so that 
+    // every part present in dictionary so if start doesn't match so we start from starting and 
+    // the substring present in the dictionary will be approved and it calls the right substring 
     int n = str.size();
     for(int i=0;i<n;i++){
        string left = str.substr(0,i+1);
