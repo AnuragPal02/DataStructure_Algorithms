@@ -2,9 +2,7 @@
 #include<math.h>
 
 int main(){
-    char g[10];
-    sscanf("%s",g);
-    int ans = stoi(g);
-    int a = atoi(g);
-
+   char s;
+   scanf("%5s",&s);
+   printf(s);
 }
