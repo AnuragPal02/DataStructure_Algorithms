@@ -16,7 +16,7 @@ void solve(vector<int>&arr,int index,vector<int>&temp,int &ans){
          temp[i] -= arr[index];
     }
 }
-    int distributeCookies(vector<int>& cookies, int k) {
+    int distributeCookies(vector<int>& cookies, int k){
          vector<int>temp(k,0);
          int ans = INT_MAX;
          solve(cookies,0,temp,ans);
