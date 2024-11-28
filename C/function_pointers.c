@@ -1,21 +1,14 @@
 #include<stdio.h>
 
+void solve(void (*function)(int,int),int a,int b){
+    printf("%d ",function(a,b));
+}
+int product(int a,int b){
+    return a*b;
+}
 
-int add(int a,int b){
-    return a+b;
-}
-void subtract(int a,int b){
-    printf("%d",b-a);
-}
-
-void solve(void (*operation)(int,int),int a,int b){
-      operation(a,b);
-}
 int main(){
-    void (*operation)(int,int);
-    
-    
-    operation = subtract;
-    
-    solve(operation,8,3);
+    int (*function)(int,int);
+    function = product;
+    solve(function,1,3);
 }

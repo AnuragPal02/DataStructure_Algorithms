@@ -1,44 +1,41 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-#define int long long
 
-signed main(){
+int main(){
     int n;cin>>n;
-    vector<int>arr;
-     unordered_map<int,int>mp;
+    vector<int> arr(n);
+    unordered_multimap<int,int> mp;
     for(int i=0;i<n;i++){
-        int x;cin>>x;
-        arr.push_back(x);
-        mp[x] = i;
+        cin>>arr[i];
+        mp.insert(arr[i],i);
     }
 
-    int m;cin>>m;
+    int m;
+    cin>>m;
     while(m--){
         int x,y;
         cin>>x>>y;
         
-        int temp = mp[arr[x]];
-        mp[arr[x]] = mp[arr[y]];
-        mp[arr[y]] = temp;
+        mp.erase(arr[x]);
+        mp.erase(arr[y]);
 
-        // swap the element in the actual array too 
-        int u = arr[x];
-        arr[x] = arr[y];
-        arr[y] = temp;
+        mp.insert(arr[x],y);
+        mp.insert(arr[y],x);
 
-        int round=1;
-    for(int i=1;i<n;i++){
-        // the current element is collected 
-        int x = i;
-        // decision whether go for another round or we can find the next element after this
-        if(mp[x+1] > mp[x]){
-            continue;
-        }else{ // round++ kyuki it can't be found after this because it is located at index which is in back to track 
-        // we have to go back and traverse again 
+        int ans = solve(mp,arr);
+        cout<<ans<<endl;
+    }
+
+}
+int solve(unordered_multimap<int,int>&mp,vector<int>&arr){
+     int round = 0;
+     int n = arr.size();
+     for(int i=0;i<n;i++){
+        int x = arr[i];
+        if(mp[x+1] > mp[x]) continue;
+        else{
             round++;
         }
-    }
-   cout<<round<<endl;
-    }
+     }
 }
