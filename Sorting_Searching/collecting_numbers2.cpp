@@ -33,9 +33,6 @@ int solve(unordered_multimap<int,int>&mp,vector<int>&arr){
      int n = arr.size();
      for(int i=0;i<n;i++){
         int x = arr[i];
-        if(mp[x+1] > mp[x]) continue;
-        else{
-            round++;
-        }
+        
      }
 }
